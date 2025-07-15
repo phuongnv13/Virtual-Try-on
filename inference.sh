@@ -1,12 +1,12 @@
 #### paired
-CUDA_VISIBLE_DEVICES=4 python inference.py \
+python inference.py \
  --config_path ./configs/VITONHD.yaml \
  --batch_size 1 \
  --model_load_path ./VITONHD_PBE_pose.ckpt \
  --save_dir ./inference_result
 
 #### unpaired
-CUDA_VISIBLE_DEVICES=4 python inference.py \
+python inference.py \
  --config_path ./configs/VITONHD.yaml \
  --batch_size 4 \
  --model_load_path <model weight path> \
@@ -14,7 +14,7 @@ CUDA_VISIBLE_DEVICES=4 python inference.py \
  --save_dir <save directory>
 
 #### paired repaint
-CUDA_VISIBLE_DEVICES=4 python inference.py \
+python inference.py \
  --config_path ./configs/VITONHD.yaml \
  --batch_size 4 \
  --model_load_path <model weight path>t \
@@ -22,7 +22,7 @@ CUDA_VISIBLE_DEVICES=4 python inference.py \
  --save_dir <save directory>
 
 #### unpaired repaint
-CUDA_VISIBLE_DEVICES=4 python inference.py \
+python inference.py \
  --config_path ./configs/VITONHD.yaml \
  --batch_size 4 \
  --model_load_path <model weight path> \

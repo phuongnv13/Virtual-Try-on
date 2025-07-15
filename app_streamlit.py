@@ -41,14 +41,14 @@ if run_button and person_file and cloth_file:
             # Prepare input directory structure as expected by your dataset/inference
             # For this example, we assume you need to place them in a folder structure
             # and create a test_pairs.txt file for unpair mode
-            data_root = os.path.join(tmpdir, "zalando-hd-resized")
+            data_root = os.path.join(tmpdir, "zalando-hd-resized-unpair")
             test_dir = os.path.join(data_root, "test")
             cloth_dir = os.path.join(data_root, "test")
             os.makedirs(test_dir, exist_ok=True)
             os.makedirs(cloth_dir, exist_ok=True)
             # Save images with unique names
-            person_fn = "00001_00.jpg"
-            cloth_fn = "10001_00.jpg"
+            person_fn = "00075_00.jpg"
+            cloth_fn = "14556_00.jpg"
             person_dst = os.path.join(test_dir, person_fn)
             cloth_dst = os.path.join(cloth_dir, cloth_fn)
             person_img.save(person_dst)
@@ -64,12 +64,13 @@ if run_button and person_file and cloth_file:
 
             # Call inference.py as subprocess
             command = [
-                "python", "inference.py",
+                "python", "single_inference.py",
                 "--config_path", "configs/VITONHD.yaml",
-                "--model_load_path", "VITONHD_PBE_pose.ckpt",
+                "--model_load_path", "VITONHD.ckpt",
                 "--batch_size", "1",
                 "--data_root_dir", data_root,
                 "--unpair",
+                "--repaint",
                 "--save_dir", output_dir
             ]
             subprocess.run(command, check=True)
